@@ -1,0 +1,373 @@
+:root {
+    /* Color Palette */
+    --vintage-gold: #d4af37;
+    --vintage-gold-light: #f4e4a6;
+    --vintage-gold-dark: #b8941f;
+    --dark-bg: #0a0e1a;
+    --blue-tint: #1a2942;
+    --blue-glow: #4a6fa5;
+    --glass-white: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+
+    /* Typography */
+    --font-decorative: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Timing */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-slow: 60s;
+    --animation-medium: 40s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dark-bg);
+    position: relative;
+}
+
+/* ========== Background Animation ========== */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+}
+
+.layer-1 {
+    background-image: url('C:/Users/ANKITH/.gemini/antigravity/brain/5faf9446-b971-4a97-89b4-7595c0b0f19d/reverse_world_background_1764911841552.png');
+    animation: reverseParallax var(--animation-slow) linear infinite;
+}
+
+.layer-2 {
+    background-image: url('C:/Users/ANKITH/.gemini/antigravity/brain/5faf9446-b971-4a97-89b4-7595c0b0f19d/reverse_world_background_1764911841552.png');
+    animation: reverseParallax var(--animation-medium) linear infinite reverse;
+    opacity: 0.3;
+    filter: blur(3px);
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center,
+            transparent 0%,
+            transparent 40%,
+            rgba(26, 41, 66, 0.4) 70%,
+            rgba(10, 14, 26, 0.8) 100%);
+    z-index: 2;
+}
+
+@keyframes reverseParallax {
+    0% {
+        transform: translateX(0) scale(1.2);
+    }
+
+    100% {
+        transform: translateX(-30%) scale(1.2);
+    }
+}
+
+/* ========== Particle Canvas ========== */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ========== Clock Container ========== */
+.clock-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock-frame {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.4));
+}
+
+.clock-frame::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(212, 175, 55, 0.15),
+            transparent 70%);
+    pointer-events: none;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.clock-face {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01));
+    backdrop-filter: blur(10px);
+    border: 3px solid var(--glass-border);
+    box-shadow:
+        inset 0 0 60px rgba(212, 175, 55, 0.1),
+        0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== Hour Markers ========== */
+.hour-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 45%;
+    transform-origin: bottom center;
+    transform: translate(-50%, -100%) rotate(var(--angle));
+    font-family: var(--font-decorative);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--vintage-gold);
+    text-shadow:
+        0 0 10px rgba(212, 175, 55, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+.hour-marker::before {
+    content: attr(data-hour);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(calc(-1 * var(--angle)));
+    display: block;
+    white-space: nowrap;
+}
+
+/* ========== Clock Center ========== */
+.clock-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, var(--vintage-gold-light), var(--vintage-gold-dark));
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    z-index: 15;
+}
+
+/* ========== Clock Hands ========== */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    background: linear-gradient(to top,
+            var(--vintage-gold-dark),
+            var(--vintage-gold-light));
+    border-radius: 10px 10px 0 0;
+    box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: none;
+}
+
+.hour-hand {
+    width: 8px;
+    height: 110px;
+    margin-left: -4px;
+    z-index: 12;
+}
+
+.minute-hand {
+    width: 6px;
+    height: 150px;
+    margin-left: -3px;
+    z-index: 13;
+}
+
+.second-hand {
+    width: 4px;
+    height: 170px;
+    margin-left: -2px;
+    background: linear-gradient(to top,
+            var(--vintage-gold),
+            var(--vintage-gold-light));
+    z-index: 14;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+}
+
+/* Add decorative engraving effect */
+.hour-hand::after,
+.minute-hand::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 2px;
+    height: 60%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transform: translateX(-50%);
+}
+
+/* ========== Message Container ========== */
+.message-container {
+    position: fixed;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 40px;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 2s ease-out 1s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.arrow {
+    font-size: 32px;
+    color: var(--vintage-gold);
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-8px);
+        opacity: 0.7;
+    }
+}
+
+.message-text {
+    font-family: var(--font-decorative);
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+    .clock-frame {
+        width: 320px;
+        height: 320px;
+    }
+
+    .clock-face {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hour-marker {
+        font-size: 20px;
+    }
+
+    .hour-hand {
+        height: 75px;
+    }
+
+    .minute-hand {
+        height: 105px;
+    }
+
+    .second-hand {
+        height: 120px;
+    }
+
+    .message-container {
+        bottom: 40px;
+        padding: 16px 24px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .message-text {
+        font-size: 16px;
+        text-align: center;
+    }
+}
