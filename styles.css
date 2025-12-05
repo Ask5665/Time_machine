@@ -260,7 +260,7 @@ body {
 /* ========== Message Container ========== */
 .message-container {
     position: fixed;
-    bottom: 55px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
