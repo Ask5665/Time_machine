@@ -320,44 +320,255 @@ body {
     line-height: 1.6;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
-
 /* ========== Responsive Design ========== */
+
+/* Tablets and smaller devices */
 @media (max-width: 768px) {
     .clock-frame {
-        width: 320px;
-        height: 320px;
+        width: 350px;
+        height: 350px;
     }
 
     .clock-face {
+        width: 310px;
+        height: 310px;
+    }
+
+    .hour-marker {
+        font-size: 22px;
+    }
+
+    .hour-hand {
+        height: 85px;
+        width: 7px;
+        margin-left: -3.5px;
+    }
+
+    .minute-hand {
+        height: 115px;
+        width: 5px;
+        margin-left: -2.5px;
+    }
+
+    .second-hand {
+        height: 130px;
+        width: 3px;
+        margin-left: -1.5px;
+    }
+
+    .clock-center {
+        width: 18px;
+        height: 18px;
+    }
+
+    .message-container {
+        bottom: 30px;
+        padding: 18px 28px;
+        max-width: 90%;
+    }
+
+    .arrow {
+        font-size: 28px;
+    }
+
+    .message-text {
+        font-size: 17px;
+        max-width: 100%;
+    }
+
+    .audio-prompt h2 {
+        font-size: 1.8rem;
+    }
+
+    .audio-prompt p {
+        font-size: 0.95rem;
+    }
+
+    .enable-audio-btn {
+        padding: 0.9rem 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .clock-frame {
         width: 280px;
         height: 280px;
     }
 
+    .clock-face {
+        width: 250px;
+        height: 250px;
+        border: 2px solid var(--glass-border);
+    }
+
     .hour-marker {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .hour-hand {
-        height: 75px;
+        height: 68px;
+        width: 6px;
+        margin-left: -3px;
     }
 
     .minute-hand {
-        height: 105px;
+        height: 92px;
+        width: 4px;
+        margin-left: -2px;
     }
 
     .second-hand {
-        height: 120px;
+        height: 105px;
+        width: 3px;
+        margin-left: -1.5px;
+    }
+
+    .clock-center {
+        width: 16px;
+        height: 16px;
     }
 
     .message-container {
-        bottom: 40px;
-        padding: 16px 24px;
+        bottom: 20px;
+        padding: 14px 20px;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        max-width: 92%;
+    }
+
+    .arrow {
+        font-size: 24px;
     }
 
     .message-text {
-        font-size: 16px;
+        font-size: 15px;
         text-align: center;
+        line-height: 1.5;
+    }
+
+    .audio-icon {
+        font-size: 3rem;
+    }
+
+    .audio-prompt h2 {
+        font-size: 1.5rem;
+    }
+
+    .audio-prompt p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .enable-audio-btn {
+        padding: 0.85rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 360px) {
+    .clock-frame {
+        width: 240px;
+        height: 240px;
+    }
+
+    .clock-face {
+        width: 215px;
+        height: 215px;
+    }
+
+    .hour-marker {
+        font-size: 16px;
+    }
+
+    .hour-hand {
+        height: 58px;
+        width: 5px;
+        margin-left: -2.5px;
+    }
+
+    .minute-hand {
+        height: 78px;
+        width: 4px;
+        margin-left: -2px;
+    }
+
+    .second-hand {
+        height: 90px;
+        width: 2px;
+        margin-left: -1px;
+    }
+
+    .clock-center {
+        width: 14px;
+        height: 14px;
+    }
+
+    .message-container {
+        bottom: 15px;
+        padding: 12px 16px;
+        gap: 8px;
+        max-width: 95%;
+    }
+
+    .arrow {
+        font-size: 20px;
+    }
+
+    .message-text {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .audio-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .audio-prompt h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .audio-prompt p {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .enable-audio-btn {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .clock-frame {
+        width: 280px;
+        height: 280px;
+    }
+
+    .clock-face {
+        width: 250px;
+        height: 250px;
+    }
+
+    .message-container {
+        bottom: 10px;
+        padding: 10px 16px;
+    }
+
+    .message-text {
+        font-size: 14px;
+    }
+
+    .arrow {
+        display: none;
     }
 }
