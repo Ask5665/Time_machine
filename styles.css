@@ -56,17 +56,7 @@ body {
     opacity: 0.6;
 }
 
-.layer-1 {
-    background-image: url('C:/Users/ANKITH/.gemini/antigravity/brain/5faf9446-b971-4a97-89b4-7595c0b0f19d/reverse_world_background_1764911841552.png');
-    animation: reverseParallax var(--animation-slow) linear infinite;
-}
 
-.layer-2 {
-    background-image: url('C:/Users/ANKITH/.gemini/antigravity/brain/5faf9446-b971-4a97-89b4-7595c0b0f19d/reverse_world_background_1764911841552.png');
-    animation: reverseParallax var(--animation-medium) linear infinite reverse;
-    opacity: 0.3;
-    filter: blur(3px);
-}
 
 .background-overlay {
     position: absolute;
