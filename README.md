@@ -80,6 +80,6 @@ Once enabled, a subtle tick plays every second.
 ## 🚀 Live Demo
 
 👉 **GitHub Pages URL:**  
-https://Ask5665.github.io/reverse-time-memory-clock/
+https://ask5665.github.io/reverse-time-memory-clock/
 
 
