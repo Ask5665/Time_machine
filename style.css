@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0b0b0b, #111);
+  font-family: system-ui, sans-serif;
+  color: #eaeaea;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* NOTES */
+.notes {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes h2 {
+  font-size: 1.3rem;
+}
+
+.note-hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0.4rem 0 1rem;
+}
+
+.notes textarea {
+  flex: 1;
+  resize: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #eaeaea;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#saveBtn {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.memory-display {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  max-height: 180px;       
+  overflow-y: auto;         
+  padding-right: 6px;       
+}
+
+.memory-date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+.memory-text {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+/* CLOCK */
+.clock-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: relative;
+  background: radial-gradient(circle, #111 60%, #000);
+}
+
+.number {
+  position: absolute;
+  top: 47%;
+  left: 48%;
+  transform:
+    rotate(calc(30deg * var(--n) - 90deg))
+    translate(135px)
+    rotate(calc(-30deg * var(--n) - 270deg));
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+}
+
+.hour { width: 6px; height: 80px; background: #fff; }
+.minute { width: 4px; height: 110px; background: #ccc; }
+.second { width: 2px; height: 130px; background: #ff4d4d; }
+
+.center-dot {
+  width: 14px;
+  height: 14px;
+  background: #ff4d4d;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.display {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+   .memory-display {
+    max-height: 140px;
+  }
+}
+
+
