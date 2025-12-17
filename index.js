@@ -69,6 +69,7 @@ function updateClock() {
   const sec = date.getSeconds();
   const min = date.getMinutes();
   const hr = date.getHours() % 12;
+  const amOrpm=date.getHours()>=12?"PM":"AM";
 
   secondHand.style.transform = `translateX(-50%) rotate(${sec * 6}deg)`;
   minuteHand.style.transform = `translateX(-50%) rotate(${min * 6 + sec * 0.1}deg)`;
@@ -85,7 +86,7 @@ function updateClock() {
 
   display.innerHTML = `
     ${weeks[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}<br>
-    ${String(hr).padStart(2,"0")}:${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}<br>
+    ${String(hr).padStart(2,"0")}:${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")} ${amOrpm}<br>
     <small>Reversed Time</small>
   `;
 
